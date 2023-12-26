@@ -1,3 +1,316 @@
 body {
+    padding: 0;
+    margin: 0;
+    background-color: black;
+}
+
+#back_img {
+    width: 100vw;
+    height: 99.45vh;
+}
+
+.content {
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.header {
+    background-color: #181818;
+    opacity: 0.7;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 150px;
+}
+
+.logo {
+    width: 20%;
+    opacity: 0.9;
+    box-shadow: 0 20px 20px rgba(0, 0, 0, 0.9);
+    border: 1px solid  #000;
+}
+
+.buttons button{
+    background-color: #282828;
+    border: 1px solid  #FFF;
+    padding: 5px 20px;
+    font-size: 20px;
+    color: #FFF;
+    margin-right: 10px;
+}
+
+.container {
+    width: 100%;
+    position: relative;
+}
+
+.text_block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fff;
+    width: 500px;
+    background-color: #181818;
+    opacity: 0.8;
+    padding: 5px;
+    font-size: 18px;
+    margin: 100px 0 0 80px;
+    display: inline-block;
+}
+
+.text_block h2 {
+    text-align: center;
+}
+
+.block {
+    width: 500px;
+    height: 600px;
+    background-color: #181818;
+    opacity: 0.8;
+    margin-top: 30px;
+    display: inline-block;
+    color: #fff;
+    font-size: 20px;
+}
+
+#sign_in {
+    position: absolute;
+    top: 0;
+    left: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#sign_up {
+    position: absolute;
+    top: 0;
+    left: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form {
+    height: 90%;
+    width: 90%;
+    border: 1px solid #FFF;
+}
+
+.form_input{
+    background-color: inherit;
+    border: 0;
+    border-bottom: 1px solid #FFF;
+    color: #fff;
+    font-size: 18px;
+}
+
+.form_input:active{
+    background-color: inherit;
+    border: 0;
+    border-bottom: 1px solid #FFF;
+    outline: none;
+}
+
+.form_input:focus{
+    background-color: inherit;
+    border: 0;
+    border-bottom: 1px solid #FFF;
+    outline: none;
+}
+
+.sign_in_button {
+    margin: 20px 0 0 130px;
+    background-color: #282828;
+    border: 1px solid  #FFF;
+    padding: 5px 20px;
+    font-size: 18px;
+    color: #FFF;
+    border-radius: 5px;
+}
+
+.type_sign_in {
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+}
+
+.type_sign_in button {
+    background-color: inherit;
+    border: 0;
+    width: 49.44%;
+    font-size: 20px;
+    color: #FFF;
+}
+
+#with_password {
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#with_rsa_key {
+    margin-left: 80px;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    align-self: center;
+    position: relative;
+}
+
+.file-input-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.file-input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+}
+
+.custom-file-input {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #282828;
+    border: 1px solid #FFF;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.display_none {
+    display: none !important;
+}
+
+.display_block {
+    display: block !important;
+}
+
+.everything_center {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#error_sign_up {
+    color: #990f02;
+    font-size: 16px;
+    position: absolute;
+    top: 400px;
+    width: 90%;
+    text-align: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #FFF;
     
+}
+
+.modal-content {
+    background-color: #282828;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    border-radius: 10px;
+}
+
+.close {
+    color: #FFF;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#modalInner {
+    background-color: inherit;
+    text-align: center;
+    font-size: 20px;
+}
+
+#modalInner a{
+    text-decoration: none;
+    color: #4682B4;
+}
+
+.white_border {
+    border: 1px solid #FFF;
+    width: 95%;
+    height: 95%;
+    margin: 15px 0;
+}
+
+.user_button {
+    margin-top: 10px;
+    background-color: inherit;
+    border: 0;
+    width: 32%;
+    font-size: 20px;
+    color: #FFF;
+}
+
+#error_send {
+    color: #990f02;
+    font-size: 16px;
+    position: absolute;
+    top: 350px;
+    width: 90%;
+    text-align: center;
+}
+
+#error_sign_in {
+    color: #990f02;
+    font-size: 16px;
+    position: absolute;
+    top: 380px;
+    width: 90%;
+    text-align: center;
+}
+
+.quick {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    margin: 0 50px 50px 0;
+}
+
+#error_sign {
+    color: #990f02;
+    font-size: 16px;
+    position: absolute;
+    top: 280px;
+    left: -20px;
+    width: 90%;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
 }
