@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/CSS/style.css">
+    <title>Blockchain</title>
+</head>
+<body>
+    <img src="/img/back_img.jpg" alt="" id="back_img">
+
+    <div class="content">
+        <div class="header">
+            <img src="/img/logo.png" alt="" class="logo">
+        </div>
+
+        <div class="everything_center">
+            <div class="everything_center block" style="width: 55% !important;">
+                <div class="white_border">
+                    <div style="width: 100%; height: 100%; position: relative;">
+                        <div>
+                            <button onclick="openProfile(`<%= user.username %>`)" class="user_button">Профиль</button>
+                            <button onclick="openSendCrypto(`<%= user.username %>`)" class="user_button">Переводы</button>
+                            <button onclick="openHistory(`<%= user.username %>`)" class="user_button">История транзакции</button>
+                        </div>
+                        <% if (page == "profile") { %>
+                            <div id="profile" class="everything_center" style="height: 500px;">
+                                <div>
+                                    <p>Имя пользователя: <%= user.username %> </p>
+                                    <p>Счет на кошелке: <%= user.balance %> </p>
+                                </div>
+                            </div>
+                            <button onclick="quick()" class="quick sign_in_button">Выйти</button>
+                        <% } %>
+                        <% if (page == "transaction") { %>
+                            <div id="sendCrypto" class="everything_center" style="height: 500px;">
+                                <div>
+                                    <p>Кому</p>
+                                    <input type="text" class="form_input" id="receiver">
+                                    <p>Сумма</p>
+                                    <input type="text" class="form_input" id="amount"> <br> <br> <br>
+                                    <button onclick="sendSubmit(`<%= user.username %>`)" class="sign_in_button" style="margin-left: 90px;">Отправить</button>
+                                </div>
+                                <span id="error_send"></span>
+                            </div>
+                        <% } %>
+                        <% if (page == "history") { %>
+                            <div id="history" class="everything_center" style="height: 500px;">
+                                <div>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Дата</th>
+                                                <th>Отправитель</th>
+                                                <th>Получатель</th>
+                                                <th>Сумма</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tableBody" class="text-center">
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <div id="modalInner"></div>
+    </div>
+    </div>
+
+    <script src="/js/index.js"></script>
+</body>
+</html>

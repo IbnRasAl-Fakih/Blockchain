@@ -7,6 +7,84 @@
     <title>Blockchain</title>
 </head>
 <body>
+    <img src="/img/back_img.jpg" alt="" id="back_img">
+
+    <div class="content">
+        <div class="header">
+            <img src="/img/logo.png" alt="" class="logo">
+            <div class="buttons">
+                <button onclick="signInBlock()">Войти</button>
+                <button onclick="signUpBlock()">Регистрация</button>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="text_block">
+                <h2>Добро пожаловать!</h2>
+                <p>С платформой CryptoBailyq ваши финансовые мечты перестают быть мечтами — они становятся реальностью. Сегодня у вас есть уникальная возможность войти в мир криптовалют с инновационной платформой, которая призвана изменить ваше финансовое будущее.</p>
+                <p>CryptoBailyq — это не просто платформа, это ключ к вашему финансовому освобождению. Мы предоставляем вам доступ к захватывающему миру криптовалют, где возможности бескрайни и успех ждет тех, кто готов сделать следующий шаг. Вот почему вы должны присоединиться к нам:</p>
+                <p>Не упускайте свой шанс. Присоединитесь к CryptoBailyq сегодня и откройте двери к новым финансовым горизонтам. Ваш успех начинается здесь и сейчас!</p>
+            </div>
     
+            <div class="block" id="sign_in">
+                <div class="form">
+                    <div>
+                        <div class="type_sign_in">
+                            <button onclick="withPassword()">Используя Пароль</button>
+                            <button onclick="withRSA()">Используя ЭЦП</button>
+                        </div>
+                        <div id="with_password">
+                            <div>
+                                <p>Логин</p>
+                                <input type="text" class="form_input" id="sign_in_username"> <br>
+                                <p>Пароль</p>
+                                <input type="password" class="form_input" id="sign_in_password"> <br> <br> <br> <br>
+                                <button onclick="signInWithPassword()" class="sign_in_button">Войти</button>
+                            </div>
+                            <span id="error_sign_in"></span>
+                        </div>
+
+                        <div id="with_rsa_key" class="display_none">
+                            <div>
+                                <p>Прикрепите открытый ЭЦП ключ</p>
+                                <div class="file-input-wrapper">
+                                    <input type="file" id="myFileInput" class="file-input">
+                                    <label for="myFileInput" class="custom-file-input">Choose a file</label>
+                                </div>
+                                <button onclick="signInWithRSA()" class="sign_in_button" style="margin-left: 200px; margin-top: 70px;">Войти</button>
+                            </div>
+                            <span id="error_sign"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="block display_none" id="sign_up">
+                <div class="form">
+                    <div class="everything_center">
+                        <div>
+                            <p>Введите имя пользователя</p>
+                            <input type="text" id="username" class="form_input">
+                            <p>Введите пароль</p>
+                            <input type="password" id="password" class="form_input">
+                            <p>Повторите пароль</p>
+                            <input type="password" class="form_input" id="password2"> <br> <br> <br>
+                            <button onclick="createUserSubmit()" class="sign_in_button" style="margin-left: 0px;">Зарегистрироваться</button>
+                        </div>
+                    </div>
+                    <span id="error_sign_up"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeModalBtn">&times;</span>
+        <div id="modalInner"></div>
+    </div>
+    </div>
+
+    <script src="/js/index.js"></script>
 </body>
 </html>
