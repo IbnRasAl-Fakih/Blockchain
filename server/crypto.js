@@ -1,4 +1,6 @@
 const crypto = require('crypto');
+const forge = require('node-forge');
+const fs = require('fs');
 
 const generateKeyPair = () => {
   return crypto.generateKeyPairSync('rsa', {
@@ -15,58 +17,22 @@ const generateKeyPair = () => {
 };
 
 const encrypt = (message, publicKey) => {
-  const encryptedMessage = crypto.publicEncrypt(
-    {
-      key: publicKey,
-      padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
-      oaepHash: 'sha256',
-    },
-    Buffer.from(message)
-  );
-
-  return encryptedMessage.toString('base64');
+  const buffer = Buffer.from(data, 'utf8');
+  const encryptedData = crypto.privateEncrypt(privateKey, buffer);
+  return encryptedData.toString('base64');
 };
 
 const decrypt = (encryptedMessage, privateKey) => {
-  const decryptedMessage = crypto.privateDecrypt(
-    {
-      key: privateKey,
-      padding: crypto.constants.RSA_PKCS1_OAEP_PADDING,
-      oaepHash: 'sha256',
-    },
-    Buffer.from(encryptedMessage, 'base64')
-  );
-
-  return decryptedMessage.toString();
+  const buffer = Buffer.from(encryptedData, 'base64');
+  const decryptedData = crypto.publicDecrypt(publicKey, buffer);
+  return decryptedData.toString('utf8');
 };
 
-const sign = (data, privateKey) => {
-  const sign = crypto.createSign('SHA256');
-  sign.update(data);
-  const signature = sign.sign(privateKey, 'base64');
-  return signature;
-};
+function createP12File(keyPem, outputPath) {
+  const privateKey = forge.pki.privateKeyFromPem(keyPem);
+  const p12Asn1 = forge.pkcs12.toPkcs12Asn1(privateKey);
+  const p12Der = forge.asn1.toDer(p12Asn1).getBytes();
+  fs.writeFileSync(outputPath, p12Der, 'binary');
+}
 
-const verify = (data, signature, publicKey) => {
-  const verify = crypto.createVerify('SHA256');
-  verify.update(data);
-  return verify.verify(publicKey, signature, 'base64');
-};
-
-module.exports = { generateKeyPair, encrypt, decrypt, sign, verify } 
-
-// const { publicKey, privateKey } = generateKeyPair();
-
-// const originalMessage = 'Hello, RSA!';
-
-// const encryptedMessage = encrypt(originalMessage, publicKey);
-// console.log('Encrypted Message:\n', encryptedMessage);
-
-// const decryptedMessage = decrypt(encryptedMessage, privateKey);
-// console.log('Decrypted Message:\n', decryptedMessage);
-
-// const signature = sign(originalMessage, privateKey);
-// console.log('Signature:\n', signature);
-
-// const isSignatureValid = verify(originalMessage, signature, publicKey);
-// console.log('Is Signature Valid:', isSignatureValid);
+module.exports = { generateKeyPair, encrypt, decrypt, createP12File }
